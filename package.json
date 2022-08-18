@@ -1,0 +1,33 @@
+{
+  "name": "system_dashboard",
+  "version": "1.0.0",
+  "description": "system_dashboard_app",
+  "main": "app.js",
+  "homepage": "https://system-dashboard.herokuapp.com/",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.9",
+    "archiver": "^5.3.1",
+    "async": "^3.2.4",
+    "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "4.15.3",
+    "fetch": "^1.1.0",
+    "fs": "^0.0.1-security",
+    "jszip": "^3.10.0",
+    "jszip-utils": "^0.1.0",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.7",
+    "node-redis": "^0.1.7",
+    "phantom": "^6.3.0",
+    "redis": "^4.0.6",
+    "request": "^2.88.2",
+    "response-time": "^2.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

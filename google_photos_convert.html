@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="loading" lang="en">
+<!-- BEGIN : Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <!-- END: Custom CSS-->
+</head>
+<!-- END : Head-->
+
+<!-- BEGIN : Body-->
+
+
+
+
+<body>
+    <div class="content-wrapper">
+        <h2>Save Google Photos albums to ZIP file</h2>
+        <fieldset>
+          <div class="input-group">
+            <input type="text" class="form-control" id="search" placeholder="Enter album URL..." data-np-checked="1">
+            <div class="input-group-append">
+              <button class="btn btn-primary" id="search-button" type="button">Save</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="spinner-border justify-content-center" role="status">
+            <span class="sr-only">Data loading...</span>
+        </div>
+
+    </div>
+</body>
+
+
+
+
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+
+            $("#search-button").click(function() {
+                var url = $('#search').val();
+                var format_url = window.location.origin + '/google_photos?url=' + url;
+                $('.spinner-border').show();
+                fetch(format_url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    },
+                })
+                .then(response => response.blob())
+                .then(response => {
+                    const blob = new Blob([response], {type: 'application/zip'});
+                    const downloadUrl = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = downloadUrl;
+                    a.download = "output.zip";
+                    document.body.appendChild(a);
+                    a.click();
+                    $('.spinner-border').hide();
+                });
+            });
+
+    </script>
+
+    
+
+
+
+    
+    <!-- END PAGE LEVEL JS-->
+    <!-- BEGIN: Custom CSS-->
+    
+    <!-- END: Custom CSS-->
+</body>
+<!-- END : Body-->
+
+</html>
